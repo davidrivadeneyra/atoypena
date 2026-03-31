@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Space+Grotesk:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,600&family=Roboto:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -23,8 +23,8 @@
   --radius-panel: 34px;
   --shadow-card: 0 18px 44px rgba(18, 18, 18, 0.08);
   --shadow-panel: 0 30px 70px rgba(11, 17, 10, 0.18);
-  --font-display: 'Russo One', sans-serif;
-  --font-body: 'Space Grotesk', 'Silka', sans-serif;
+  --font-display: 'Google Sans Flex', sans-serif;
+  --font-body: 'Roboto', 'Silka', sans-serif;
 }
 
 @layer base {
@@ -58,7 +58,7 @@
 
 @layer components {
   .app-shell {
-    @apply min-h-screen bg-[var(--bg-page)];
+    @apply min-h-screen bg-[var(--bg-page)] pt-[74px];
   }
 
   .site-container {
@@ -66,20 +66,27 @@
   }
 
   .site-header {
-    @apply sticky top-0 z-50 border-b border-[var(--line-dark)] bg-[rgba(19,19,19,0.92)] backdrop-blur;
+    @apply fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300;
+    background-color: #131313;
+    border-bottom-color: rgba(120, 220, 119, 0.18);
+  }
+
+  .site-header-scrolled {
+    background-color: #131313;
+    border-bottom-color: rgba(120, 220, 119, 0.18);
   }
 
   .site-header-inner {
-    @apply flex h-[74px] items-center justify-between gap-6;
+    @apply flex h-[96px] items-center justify-between gap-6;
   }
 
   .logo-mark {
-    @apply flex h-12 w-[112px] items-center justify-center bg-white px-2 py-1;
+    @apply flex items-center justify-center;
     border-radius: 16px;
   }
 
   .logo-image {
-    @apply h-auto max-h-7 w-full object-contain;
+    @apply h-auto max-h-20 w-full object-contain;
   }
 
   .site-nav {
@@ -117,8 +124,7 @@
   }
 
   .hero-shell {
-    @apply relative isolate overflow-hidden bg-[var(--bg-dark)] pt-20 text-white;
-  }
+    @apply relative isolate overflow-hidden bg-[var(--bg-dark)] text-white h-screen  }
 
   .hero-media,
   .hero-overlay,
@@ -139,7 +145,7 @@
   }
 
   .hero-content {
-    @apply relative grid min-h-[calc(100vh-74px)] items-end gap-10 py-20 lg:grid-cols-[minmax(0,1.15fr)_340px];
+    @apply relative grid min-h-[calc(100vh-12rem)] items-end gap-10 py-20 lg:grid-cols-[minmax(0,1.15fr)_340px];
   }
 
   .hero-copy,

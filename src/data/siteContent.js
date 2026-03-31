@@ -24,7 +24,7 @@ export const homeHeroSlides = [
   {
     alt: 'Remolques para sector agrícola',
     description: 'Diseño robusto para trabajo continuo en campo y rutas mixtas.',
-    image: '/assets/site-images/home/slide1.avif',
+    image: '/assets/site-images/home/hero.jpeg',
     kicker: 'Ingeniería de precisión',
     title: 'Sector agrícola',
   },

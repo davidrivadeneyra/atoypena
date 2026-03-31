@@ -69,7 +69,7 @@ function HeroSection() {
           <p className="hero-kicker">{primarySlide.kicker}</p>
           <h1 className="hero-title">
             Remolques para
-            <span className="text-brand"> trabajo real</span>
+            <span className="text-brand"> mini cargadores</span>
           </h1>
           <p className="hero-description">
             Diseñamos y fabricamos remolques personalizados de alta calidad para
@@ -117,7 +117,7 @@ function StrengthsSection() {
     <section className="section-light">
       <div className="site-container stack-20">
         <SectionHeading
-          accent="Ato & Peña"
+          accent="Ato & Peña?"
           description="No solo construimos remolques. Diseñamos soluciones de transporte con lógica estructural, acabados durables y foco en operación intensiva."
           eyebrow="Ventaja Competitiva"
           title="¿Por qué elegir"
@@ -453,7 +453,7 @@ function App() {
 
   return (
     <div className="app-shell">
-      <SiteHeader currentCategory={currentCategory} />
+      <SiteHeader currentCategory={currentCategory} isHome={pathname === '/' || pathname === '/home'} />
       {renderRoute(pathname)}
       <Footer />
     </div>

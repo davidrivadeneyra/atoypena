@@ -4,7 +4,7 @@ import { companyInfo } from '../data/siteContent'
 function ContactSection({ compact = false, standalone = false }) {
   return (
     <section className={standalone ? 'contact-shell contact-shell-standalone' : 'contact-shell'}>
-      <div className={compact ? 'contact-grid contact-grid-compact' : 'contact-grid'}>
+      <div className={compact ? 'contact-grid contact-grid-compact' : 'contact-grid site-container'}>
         <div className="contact-panel">
           <p className="section-eyebrow">Planta y Ventas</p>
           <h2 className="section-title text-ink">

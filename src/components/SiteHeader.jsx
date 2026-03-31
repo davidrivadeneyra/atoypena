@@ -1,11 +1,31 @@
+import { useEffect, useState } from 'react'
 import AppLink from './AppLink'
 import { productCategories } from '../data/siteContent'
 
-function SiteHeader({ currentCategory }) {
+function SiteHeader({ currentCategory, isHome = false }) {
   const currentProduct = productCategories.find((category) => category.slug === currentCategory)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    if (!isHome) {
+      setIsScrolled(false)
+      return undefined
+    }
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0)
+    }
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [isHome])
 
   return (
-    <header className="site-header">
+    <header className={isScrolled ? 'site-header site-header-scrolled' : 'site-header'}>
       <div className="site-container site-header-inner">
         <AppLink className="logo-mark" to="/">
           <img alt="Remolques Ato & Peña" className="logo-image" src="/assets/logo.png" />
