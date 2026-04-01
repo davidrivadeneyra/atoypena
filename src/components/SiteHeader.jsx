@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import AppLink from './AppLink'
-import { productCategories } from '../data/siteContent'
+import { companyInfo, productCategories } from '../data/siteContent'
 
 function SiteHeader({ currentCategory, isHome = false }) {
   const currentProduct = productCategories.find((category) => category.slug === currentCategory)
@@ -48,12 +48,9 @@ function SiteHeader({ currentCategory, isHome = false }) {
           <AppLink className="site-nav-link" to="/#catalogo">
             Categorías
           </AppLink>
-          <AppLink className="site-nav-link" to="/#contacto">
-            Contáctenos
-          </AppLink>
         </nav>
 
-        <AppLink className="btn-primary btn-header" to="/#contacto">
+        <AppLink className="btn-primary btn-header" href={companyInfo.whatsappHref}>
           Solicitar cotización
         </AppLink>
 
@@ -77,10 +74,7 @@ function SiteHeader({ currentCategory, isHome = false }) {
             <AppLink className="mobile-nav-link" to="/#catalogo">
               Categorías
             </AppLink>
-            <AppLink className="mobile-nav-link" to="/#contacto">
-              Contáctenos
-            </AppLink>
-            <AppLink className="btn-primary mobile-nav-cta" to="/#contacto">
+            <AppLink className="btn-primary mobile-nav-cta" href={companyInfo.whatsappHref}>
               Solicitar cotización
             </AppLink>
           </nav>

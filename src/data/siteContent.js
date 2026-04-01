@@ -13,7 +13,7 @@ export const companyInfo = {
   address: 'Av. Los Olivos, Mz. F, lote 26, San Martín de Porres, Lima, Perú.',
   description:
     'Fabricación y diseño de remolques de alta resistencia para agricultura, minería, energía, logística y proyectos especiales.',
-  email: 'ventas@estructurametalicaato.com',
+  email: 'ventas@fabricaremolquesato@gmail.com',
   phonePrimary: '(+51) 995 374 449',
   phoneSecondary: '(+51) 989 403 067',
   schedule: 'Lunes a sábado, 8:00 AM a 7:00 PM.',

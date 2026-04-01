@@ -29,9 +29,6 @@ function ContactSection({ compact = false, standalone = false }) {
             <a className="btn-primary" href={companyInfo.whatsappHref}>
               Escribir por WhatsApp
             </a>
-            <AppLink className="btn-secondary btn-secondary-dark" to="/">
-              Ver categorías
-            </AppLink>
           </div>
         </div>
 

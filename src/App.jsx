@@ -97,11 +97,11 @@ function HeroSection() {
             agricultura, minería, construcción, logística e industria pesada.
           </p>
           <div className="hero-actions">
-            <AppLink className="btn-primary" to="/productos/remolques-para-sector-agricola">
-              Explorar catálogo
-            </AppLink>
-            <AppLink className="btn-secondary" to="/#contacto">
+            <AppLink className="btn-primary" href={companyInfo.whatsappHref} >
               Solicitar cotización
+            </AppLink>
+            <AppLink className="btn-secondary" to="/productos/remolques-para-sector-agricola">
+              Explorar catálogo
             </AppLink>
           </div>
         </div>
@@ -380,7 +380,7 @@ function ProductPage({ slug }) {
                   ))}
                 </ul>
               </div>
-              <AppLink className="btn-primary w-full justify-center" to="/#contacto">
+              <AppLink className="btn-primary w-full justify-center" href={companyInfo.whatsappHref}>
                 Solicitar cotización
               </AppLink>
             </aside>
