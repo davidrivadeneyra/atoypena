@@ -393,5 +393,5 @@ export const productCategories = [
 export const siteFooterLinks = [
   { href: '/', label: 'Inicio' },
   { href: '/productos/remolques-para-sector-agricola', label: 'Productos' },
-  { href: '/contacto', label: 'Contáctenos' },
+  { href: '/#contacto', label: 'Contáctenos' },
 ]

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import AppLink from './components/AppLink'
 import ContactSection from './components/ContactSection'
 import ProductCategoryCard from './components/ProductCategoryCard'
@@ -11,6 +11,7 @@ import {
   productCategories,
   siteFooterLinks,
 } from './data/siteContent'
+import { Check } from 'lucide-react'
 
 function getPathname() {
   if (typeof window === 'undefined') {
@@ -36,6 +37,26 @@ function usePathname() {
   }, [])
 
   return pathname
+}
+
+function useHashScroll(pathname) {
+  useLayoutEffect(() => {
+    const { hash } = window.location
+
+    if (!hash) {
+      return
+    }
+
+    const id = hash.replace('#', '')
+
+    window.requestAnimationFrame(() => {
+      const element = document.getElementById(id)
+
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    })
+  }, [pathname])
 }
 
 function SectionHeading({ eyebrow, title, accent, description, centered = false }) {
@@ -79,7 +100,7 @@ function HeroSection() {
             <AppLink className="btn-primary" to="/productos/remolques-para-sector-agricola">
               Explorar catálogo
             </AppLink>
-            <AppLink className="btn-secondary" to="/contacto">
+            <AppLink className="btn-secondary" to="/#contacto">
               Solicitar cotización
             </AppLink>
           </div>
@@ -87,7 +108,7 @@ function HeroSection() {
         <div className="hero-side-panel">
           {homeHeroSlides.map((slide) => (
             <div className="hero-side-item" key={slide.title}>
-              <p className="hero-side-label">{slide.title}</p>
+              <p className="hero-side-label text-white">{slide.title}</p>
               <p className="hero-side-copy">{slide.description}</p>
             </div>
           ))}
@@ -229,21 +250,24 @@ function ProjectCtaSection() {
           />
         </div>
         <div className="project-copy">
-          <p className="section-eyebrow">Proyectos Especiales</p>
+          <p className="section-eyebrow pb-6">Proyectos Especiales</p>
           <h2 className="section-title text-on-dark">
             Diseñamos el remolque que su
             <span className="text-brand"> negocio necesita</span>
           </h2>
-          <p className="section-copy text-on-dark-soft">
+          <p className="text-neutral-400 pb-6 section-copy">
             Desarrollamos remolques bajo especificación técnica, carga requerida y
             tipo de maniobra. Desde un único prototipo hasta series productivas.
           </p>
-          <ul className="bullet-list">
-            <li>Cálculo estructural con criterio de uso real.</li>
-            <li>Fabricación sobre acero de calidad industrial.</li>
-            <li>Acabados personalizados para operación intensiva.</li>
+          <ul className="bullet-list pb-6">
+            <li className='flex gap-2'>< Check size={24} color={'#59ba56'}/>
+            Cálculo estructural con criterio de uso real.</li>
+            <li className='flex gap-2'>< Check size={24} color={'#59ba56'}/>
+            Fabricación sobre acero de calidad industrial.</li>
+            <li className='flex gap-2'>< Check size={24} color={'#59ba56'}/>
+           Acabados personalizados para operación intensiva.</li>
           </ul>
-          <AppLink className="btn-primary" to="/contacto">
+          <AppLink className="btn-primary" to="/#contacto">
             Iniciar mi proyecto
           </AppLink>
         </div>
@@ -256,28 +280,24 @@ function Footer() {
   return (
     <footer className="site-footer">
       <div className="site-container footer-grid">
-        <div className="stack-10">
-          <img alt="Logo Remolques Ato & Peña" className="footer-logo" src="/assets/logo.png" />
+         <img alt="Logo Remolques Ato & Peña" className="footer-logo" src="/assets/logo.png" />
+        <div className="stack-10 items-start">
+         <p className="footer-label">Sobre nosotros</p>
           <p className="footer-copy">
             {companyInfo.description}
           </p>
         </div>
         <div className="stack-10">
-          <p className="footer-label">Enlaces</p>
-          {siteFooterLinks.map((link) => (
-            <AppLink className="footer-link" key={link.href} to={link.href}>
-              {link.label}
-            </AppLink>
-          ))}
-        </div>
-        <div className="stack-10">
           <p className="footer-label">Contacto</p>
+          <div className='flex flex-col'>
           <p className="footer-copy">{companyInfo.address}</p>
           <p className="footer-copy">{companyInfo.schedule}</p>
           <p className="footer-copy">{companyInfo.phonePrimary}</p>
-          <a className="footer-link" href={`mailto:${companyInfo.email}`}>
+          <a className="footer-copy" href={`mailto:${companyInfo.email}`}>
             {companyInfo.email}
           </a>
+          </div>
+          
         </div>
       </div>
     </footer>
@@ -360,7 +380,7 @@ function ProductPage({ slug }) {
                   ))}
                 </ul>
               </div>
-              <AppLink className="btn-primary w-full justify-center" to="/contacto">
+              <AppLink className="btn-primary w-full justify-center" to="/#contacto">
                 Solicitar cotización
               </AppLink>
             </aside>
@@ -393,23 +413,6 @@ function ProductPage({ slug }) {
     </>
   )
 }
-
-function ContactPage() {
-  return (
-    <section className="section-light">
-      <div className="site-container pt-page">
-        <SectionHeading
-          eyebrow="Contacto"
-          title="Solicita una"
-          accent="cotización"
-          description="Cuéntanos qué tipo de remolque necesitas, capacidad de carga, uso y tiempos de entrega esperados."
-        />
-        <ContactSection standalone />
-      </div>
-    </section>
-  )
-}
-
 function NotFoundPage() {
   return (
     <section className="section-light">
@@ -429,10 +432,6 @@ function renderRoute(pathname) {
     return <HomePage />
   }
 
-  if (pathname === '/contacto') {
-    return <ContactPage />
-  }
-
   if (pathname.startsWith('/productos/')) {
     const slug = pathname.replace('/productos/', '')
     return <ProductPage slug={slug} />
@@ -443,6 +442,7 @@ function renderRoute(pathname) {
 
 function App() {
   const pathname = usePathname()
+  useHashScroll(pathname)
   const currentCategory = useMemo(() => {
     if (!pathname.startsWith('/productos/')) {
       return null
