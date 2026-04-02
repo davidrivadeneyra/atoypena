@@ -4,7 +4,6 @@ import AppLink from './AppLink'
 import { companyInfo, productCategories } from '../data/siteContent'
 
 function SiteHeader({ currentCategory, isHome = false }) {
-  const currentProduct = productCategories.find((category) => category.slug === currentCategory)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -30,10 +29,6 @@ function SiteHeader({ currentCategory, isHome = false }) {
     setIsMenuOpen(false)
   }, [currentCategory, isHome])
 
-  const productHref = currentProduct
-    ? `/productos/${currentProduct.slug}`
-    : '/productos/remolques-para-sector-agricola'
-
   return (
     <header className={isScrolled ? 'site-header site-header-scrolled' : 'site-header'}>
       <div className="site-container site-header-inner relative">
@@ -42,7 +37,7 @@ function SiteHeader({ currentCategory, isHome = false }) {
         </AppLink>
 
         <nav className="site-nav" aria-label="Navegación principal">
-          <AppLink className="site-nav-link" to={productHref}>
+          <AppLink className="site-nav-link" to="/productos">
             Productos
           </AppLink>
           <AppLink className="site-nav-link" to="/#catalogo">
@@ -68,7 +63,7 @@ function SiteHeader({ currentCategory, isHome = false }) {
       {isMenuOpen ? (
         <div className="mobile-nav-shell">
           <nav className="mobile-nav" aria-label="Navegación móvil">
-            <AppLink className="mobile-nav-link" to={productHref}>
+            <AppLink className="mobile-nav-link" to="/productos">
               Productos
             </AppLink>
             <AppLink className="mobile-nav-link" to="/#catalogo">

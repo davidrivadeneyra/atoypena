@@ -233,6 +233,30 @@ function HomeCatalogSection() {
   )
 }
 
+function ProductIndexPage() {
+  return (
+    <>
+      <section className="section-light pt-page">
+        <div className="site-container stack-20">
+          <SectionHeading
+            centered
+            eyebrow="Catálogo"
+            title="Todas las"
+            accent="Categorías"
+            description="Las categorías y galerías se construyen automáticamente desde los directorios disponibles en el catálogo de imágenes."
+          />
+          <div className="product-grid">
+            {productCategories.map((category) => (
+              <ProductCategoryCard category={category} key={category.slug} />
+            ))}
+          </div>
+        </div>
+      </section>
+      <ContactSection compact />
+    </>
+  )
+}
+
 function ProjectCtaSection() {
   return (
     <section className="section-dark">
@@ -380,7 +404,7 @@ function ProductPage({ slug }) {
                   ))}
                 </ul>
               </div>
-              <AppLink className="btn-primary w-full justify-center" href={companyInfo.whatsappHref}>
+              <AppLink className="btn-primary w-full justify-center" to={companyInfo.whatsappHref}>
                 Solicitar cotización
               </AppLink>
             </aside>
@@ -430,6 +454,10 @@ function NotFoundPage() {
 function renderRoute(pathname) {
   if (pathname === '/' || pathname === '/home') {
     return <HomePage />
+  }
+
+  if (pathname === '/productos') {
+    return <ProductIndexPage />
   }
 
   if (pathname.startsWith('/productos/')) {
