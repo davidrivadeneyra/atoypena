@@ -236,11 +236,11 @@ const productCategoryMetaBySlug = {
     description: 'Capacidad para soportar equipos pesados con seguridad.',
     groups: [
       { files: ['construccion-y-mineria.avif', 'construccion-y-mineria1.avif'], name: 'Remolque para retroexcavadora' },
-      { files: ['construccion-y-mineria2.avif'], name: 'Remolque para montacarga' },
+      { files: ['construccion-y-mineria15.jpg', 'construccion-y-mineria2.avif'], name: 'Remolque para montacarga' },
       { files: ['construccion-y-mineria3.avif', 'construccion-y-mineria4.avif'], name: 'Remolque para autonivelador' },
-      { files: ['construccion-y-mineria5.avif', 'construccion-y-mineria6.avif'], name: 'Remolque con tornamesa' },
+      { files: ['construccion-y-mineria16.jpg', 'construccion-y-mineria5.avif', 'construccion-y-mineria6.avif'], name: 'Remolque con tornamesa' },
       {
-        files: ['construccion-y-mineria7.avif', 'construccion-y-mineria13.avif', 'construccion-y-mineria8.avif'],
+        files: ['construccion-y-mineria14.jpg', 'construccion-y-mineria7.avif', 'construccion-y-mineria13.avif', 'construccion-y-mineria8.avif'],
         name: 'Remolque para minicargador',
       },
       { files: ['construccion-y-mineria9.avif', 'construccion-y-mineria10.avif'], name: 'Remolque para rodillo' },
